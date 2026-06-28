@@ -13,7 +13,7 @@ Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 |----|------|-----|-------|
 | 1 | Made Arya Dharma Putra Mahothama | 250030020 | Phpmailer google regis |
 | 2 | I Gusti Agung Bramantha Prana Citra J. | 250030061 | All validation value role |
-| 3 | I Putu Yoga Pratama | 250030062 | Transaksi PHPmailer google |
+| 3 | I Putu Yoga Pratama | 250030062 | Transaksi PHPmailer gmail |
 | 4 | Gede Agung Bagus Aryadinatha | 250030094 | Alur pembelian PHP |
 | 5 | I Dewa Agung Ayu Lidya Aristawati | 250030485 | Desain via CSS & HTML |
 
