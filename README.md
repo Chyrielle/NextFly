@@ -1,5 +1,4 @@
 # Project Herdian
-# Kerja Kerja Kerja
 # Kelompok-5 Sistem Booking Tiket Perjalanan
 
 Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
