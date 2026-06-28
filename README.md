@@ -1,5 +1,6 @@
 # Project Herdian
-# KLP-5 Sistem Booking Tiket Perjalanan
+# Kerja Kerja Kerja
+# Kelompok-5 Sistem Booking Tiket Perjalanan
 
 Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 
@@ -16,80 +17,6 @@ Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 | 3 | I Putu Yoga Pratama | 250030062 | Transaksi PHPmailer gmail |
 | 4 | Gede Agung Bagus Aryadinatha | 250030094 | Alur pembelian PHP |
 | 5 | I Dewa Agung Ayu Lidya Aristawati | 250030485 | Desain via CSS & HTML |
-
----
-
-## Tech Stack
-
-- **PHP 8.x** (Native)
-- **MySQL** (via phpMyAdmin)
-- **Composer** — PHPMailer, FPDF
-- **Tailwind CSS** (via CDN)
-- **Git & GitHub** — kolaborasi
-
----
-
-## Panduan Setup
-
-### 1. Persiapan Tools
-
-
-
-### 2. Clone Repository
-
-```
-cd C:\xampp\htdocs
-git clone https://github.com/DavidPandleton/klp7-kos-management.git
-cd klp7-kos-management
-```
-
-### 3. Install Dependencies (Composer)
-
-```
-composer install
-```
-
-Jika Composer tidak dikenali, gunakan PHP langsung dari XAMPP:
-
-```
-"C:\xampp\php\php.exe" composer.phar install
-```
-
-### 4. Setup Database
-
-1. Buka **XAMPP Control Panel**
-2. Start **Apache** dan **MySQL**
-3. Buka browser: `http://localhost/phpmyadmin`
-4. Klik tab **SQL**
-5. Salin isi file `database/schema.sql` lalu jalankan
-
-Atau melalui command line:
-
-```
-mysql -u root < database/schema.sql
-```
-
-### 5. Menjalankan Project
-
-**Via PHP built-in server (disarankan):**
-
-```
-php -S localhost:8000 -t public
-```
-
-Buka: `http://localhost:8000`
-
-**Via XAMPP:**
-- Pastikan project berada di `C:\xampp\htdocs\klp7-kos-management`
-- Buka: `http://localhost/klp7-kos-management/public/`
-
-### 6. Login (Akun Test)
-
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@kos.com | password |
-| Pemilik | pemilik@kos.com | password |
-| Penyewa | penyewa@kos.com | password |
 
 ---
 
