@@ -33,12 +33,7 @@ Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 
 ### 1. Persiapan Tools
 
-| Tool | Download | Keterangan |
-|------|----------|------------|
-| XAMPP | https://www.apachefriends.org/ | PHP + MySQL + phpMyAdmin |
-| Composer | https://getcomposer.org/ | Dependency manager PHP |
-| Git | https://git-scm.com/ | Version control |
-| VS Code | https://code.visualstudio.com/ | Code editor (opsional) |
+
 
 ### 2. Clone Repository
 
