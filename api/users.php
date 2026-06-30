@@ -7,6 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 session_start();
 
 require_once __DIR__ . '/../classes/infouser.php';
+require_once __DIR__ . '/../validation role/access.php';
 
 function sendResponse($status, $data = null) {
     http_response_code($status);
@@ -23,8 +24,20 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
     sendResponse(401, ["success" => false, "message" => "Sesi habis, silakan login ulang"]);
 }
 
-if ($_SESSION['role'] !== 'admin') {
-    sendResponse(403, ["success" => false, "message" => "Akses ditolak. Hanya admin yang boleh."]);
+if (
+    !isset($_SESSION['role'])
+    ||
+    !hasPermission(
+        $_SESSION['role'],
+        'manage_users'
+    )
+) {
+
+    sendResponse(403, [
+        "success" => false,
+        "message" => "Akses ditolak."
+    ]);
+
 }
 
 $method    = $_SERVER["REQUEST_METHOD"];
