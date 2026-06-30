@@ -7,6 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 session_start();
 
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../validation role/redirect.php';
 
 function sendResponse($status, $data = null) {
     http_response_code($status);
@@ -44,12 +45,13 @@ if ($user) {
     $_SESSION['role']  = $user['role'];
     $_SESSION['expire'] = time() + 3600; 
 
-    sendResponse(200, [
-        "success"  => true,
-        "message"  => "Login berhasil",
-        "username" => $user['username'],
-        "role"     => $user['role']
-    ]);
+   sendResponse(200, [
+    "success"  => true,
+    "message"  => "Login berhasil",
+    "username" => $user['username'],
+    "role"     => $user['role'],
+    "redirect" => getRedirectPage($user['role'])
+]);
 } else {
     sendResponse(401, ["success" => false, "message" => "Username atau password salah"]);
 }
