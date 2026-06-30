@@ -11,11 +11,11 @@ Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 
 | No | Nama | NIM | Tugas |
 |----|------|-----|-------|
-| 1 | Made Arya Dharma Putra Mahothama | 250030020 | Phpmailer Google Regis |
+| 1 | Made Arya Dharma Putra Mahothama | 250030020 | Login & Registration |
 | 2 | I Gusti Agung Bramantha Prana Citra J. | 250030061 | All Validation Value Role |
-| 3 | I Putu Yoga Pratama | 250030062 | Transaksi PHPmailer Gmail |
-| 4 | Gede Agung Bagus Aryadinatha | 250030094 | Alur Pembelian PHP |
-| 5 | I Dewa Agung Ayu Lidya Aristawati | 250030485 | Desain via CSS & HTML |
+| 3 | I Putu Yoga Pratama | 250030062 | Transaction PHPmailer Gmail |
+| 4 | Gede Agung Bagus Aryadinatha | 250030094 | Application Workflow |
+| 5 | I Dewa Agung Ayu Lidya Aristawati | 250030485 | Desainer |
 
 ---
 
@@ -61,22 +61,27 @@ travel-ticket-booking/
 ├── mail/                     ←Yoga
 │   ├── TransactionMail.php
 │   └── InvoiceMail.php
+│       
+├── user/                 ←Bram & Lidya
+│   ├── dashboard.html
+│   ├── history.php
+│   └── profile.php
 │
-├── Validation Role/         ←Bram & Lidya
-│   ├── user/
-│   │   ├── dashboard.html
-│   │   ├── history.php
-│   │   └── profile.php
-│   │
-│   └── admin/                       
-│   │   ├── dashboard.html 
-│   │   ├── users.php
-│   │   ├── bookings.php
-│   │   ├── payments.php
-│   │   ├── schedules.php
-│   │   └── reports.php
-├── booking/                 ←Ajus
-│   ├── Booking Page.php
+├── CS/                   ←Bram & Lidya
+│   ├── dashboard.html
+│   ├── report.php
+│   └──history.php
+│ 
+├── admin/                ←Bram & Lidya              
+│   ├── dashboard.html 
+│   ├── users.php
+│   ├── bookings.php
+│   ├── payments.php
+│   ├── schedules.php
+│   └── reports.php
+│ 
+├── booking/                 ←Ajus & Lidya
+│   ├── Booking Page.html 
 │   ├── search.php
 │   ├── flight.php
 │   ├── train.php
@@ -84,8 +89,8 @@ travel-ticket-booking/
 │   ├── passenger.php
 │   └── checkout.php
 │   │
-│   ├── payment/             ←Yoga
-│   │   ├── Payment Page.php ←Lidya  
+│   ├── payment/             ←Yoga & Lidya
+│   │   ├── Payment Page.php   
 │   │   ├── payment.php
 │   │   ├── success.php
 │   │   ├── failed.php
