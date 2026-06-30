@@ -12,7 +12,7 @@ $permissions = [
         'view_reports'
     ],
 
-    ROLE_EDITOR => [
+    ROLE_CUSTOMER_SERVICE => [
         'manage_booking',
         'manage_payment'
     ],
