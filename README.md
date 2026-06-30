@@ -24,52 +24,41 @@ Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 ```
 travel-ticket-booking/
 │
-├── assets/                          ← Lidya
-│   ├── css/
-│   │   ├── style.css
-│   │   ├── login.css
-│   │   ├── register.css
-│   │   ├── dashboard.css
-│   │   ├── booking.css
-│   │   ├── payment.css
-│   │   ├── admin.css
-│   │   └── responsive.css
-│   │
-│   ├── js/
-│   │   ├── script.js
-│   │   ├── validation.js
-│   │   └── booking.js
-│   │
-│   ├── images/
-│   └── icons/
+├── api/                    ←Bram
+│   ├── login.php
+│   ├── logout.php
+│   └── users.php
 │
-├── config/                          ← Bram
+├── classes/                ←Bram & Yoga
+│   └──infouser.php
+│   
+├── config/                 ←Bram   
 │   ├── database.php
 │   ├── session.php
 │   ├── config.php
 │   └── roles.php
 │
-├── controllers/
-│   ├── AuthController.php           ← Arya
-│   ├── BookingController.php        ← Ajus
-│   ├── PaymentController.php        ← Yoga
+├── controllers/             ←Bram, Yoga & Ajus
+│   ├── AuthController.php          
+│   ├── BookingController.php        
+│   ├── PaymentController.php        
 │   ├── UserController.php
-│   └── AdminController.php          ← Bram
+│   └── AdminController.php          
 │
-├── models/
+├── models/                  ←Ajus & Yoga
 │   ├── User.php
 │   ├── Ticket.php
 │   ├── Booking.php
 │   ├── Payment.php
 │   └── Passenger.php
 │
-├── middleware/                      ← Bram
+├── middleware/              ←Bram
 │   ├── auth.php
 │   ├── admin.php
 │   ├── user.php
 │   └── validation.php
 │
-├── mail/                            ← Arya & Yoga
+├── mail/                     ←Arya & Yoga
 │   ├── PHPMailer/
 │   ├── MailConfig.php
 │   ├── RegisterMail.php
@@ -77,57 +66,48 @@ travel-ticket-booking/
 │   ├── TransactionMail.php
 │   └── InvoiceMail.php
 │
-├── views/
-│   ├── layouts/                     ← Lidya
-│   │   ├── header.php
-│   │   ├── navbar.php
-│   │   ├── sidebar.php
-│   │   └── footer.php
+├── Validation Role/         ←Bram & Lidya
+│   ├── user/
+│   │   ├── dashboard.html
+│   │   ├── history.php
+│   │   └── profile.php
 │   │
-│   ├── auth/                        ← Arya + Lidya
-│   │   ├── login.php
-│   │   ├── register.php
-│   │   ├── verify.php
-│   │   └── forgot-password.php
+│   └── admin/                       
+│   │   ├── dashboard.html 
+│   │   ├── users.php
+│   │   ├── bookings.php
+│   │   ├── payments.php
+│   │   ├── schedules.php
+│   │   └── reports.php
+├── booking/                 ←Ajus
+│   ├── Booking Page.php
+│   ├── search.php
+│   ├── flight.php
+│   ├── train.php
+│   ├── bus.php
+│   ├── passenger.php
+│   └── checkout.php
 │   │
-│   ├── booking/                     ← Ajus + Lidya
-│   │   ├── search.php
-│   │   ├── flight.php
-│   │   ├── train.php
-│   │   ├── bus.php
-│   │   ├── passenger.php
-│   │   └── checkout.php
-│   │
-│   ├── payment/                     ← Yoga + Lidya
+│   ├── payment/             ←Yoga
+│   │   ├── Payment Page.php ←Lidya  
 │   │   ├── payment.php
 │   │   ├── success.php
 │   │   ├── failed.php
 │   │   └── invoice.php
-│   │
-│   ├── user/
-│   │   ├── dashboard.php
-│   │   ├── history.php
-│   │   └── profile.php
-│   │
-│   └── admin/                       ← Bram
-│       ├── dashboard.php
-│       ├── users.php
-│       ├── bookings.php
-│       ├── payments.php
-│       ├── schedules.php
-│       └── reports.php
 │
-├── database/                        ← Bram
+├── database/             ←Yoga & Bram
 │   ├── database.sql
-│   └── dummy.sql
-│
-├── uploads/
 │   ├── profile/
 │   └── payment-proof/
 │
 ├── vendor/
 │
-├── index.php
-├── composer.json
+├── login.html           ←Arya
+├── register.html        ←Arya
+├── register.php         ←Arya
+├── composer.json        ←Arya
+├── composer.lock        ←Arya
+├── Homepage.html        ←Lidya
+├── composer.json`       ←Arya
 ├── README.md
 └── .gitignore
