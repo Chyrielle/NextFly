@@ -8,7 +8,7 @@ if (
     ||
     !in_array(
         $_SESSION['role'],
-        [ROLE_ADMIN, ROLE_EDITOR]
+        [ROLE_ADMIN, ROLE_CUSTOMER_SERVICE]
     )
 ) {
 
