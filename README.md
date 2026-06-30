@@ -58,11 +58,7 @@ travel-ticket-booking/
 │   ├── user.php
 │   └── validation.php
 │
-├── mail/                     ←Arya & Yoga
-│   ├── PHPMailer/
-│   ├── MailConfig.php
-│   ├── RegisterMail.php
-│   ├── VerificationMail.php
+├── mail/                     ←Yoga
 │   ├── TransactionMail.php
 │   └── InvoiceMail.php
 │
