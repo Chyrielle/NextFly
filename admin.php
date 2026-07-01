@@ -37,7 +37,7 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
     <input type="password" id="new_password" placeholder="Password">
     <select id="new_role">
         <option value="admin">Admin</option>
-        <option value="editor">Editor</option>
+        <option value="customer_service">Customer_Service</option>
         <option value="viewer">Viewer</option>
     </select>
     <button class="btn btn-primary" onclick="tambahUser()">+ Simpan</button>
