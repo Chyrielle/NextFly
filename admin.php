@@ -25,7 +25,7 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
 <p>Halo, <strong><?= htmlspecialchars($_SESSION['user']) ?></strong>!</p>
 
 <nav>
-    <button onclick="location.href='beranda.php'">Beranda</button>
+    <button onclick="location.href='user.php'">User</button>
     <button onclick="location.href='customer_service.php'">Customer_Service</button>
     <button onclick="doLogout()" style="background:#e53935">Logout</button>
 </nav>
@@ -38,7 +38,7 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
     <select id="new_role">
         <option value="admin">Admin</option>
         <option value="customer_service">Customer_Service</option>
-        <option value="viewer">Viewer</option>
+        <option value="user">User</option>
     </select>
     <button class="btn btn-primary" onclick="tambahUser()">+ Simpan</button>
 </div>
@@ -76,8 +76,8 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
                 <td>
                     <select id="role-${u.id}">
                         <option value="admin"  ${u.role==='admin'  ? 'selected':''}>Admin</option>
-                        <option value="editor" ${u.role==='customer_service' ? 'selected':''}>Customer_Service</option>
-                        <option value="viewer" ${u.role==='viewer' ? 'selected':''}>Viewer</option>
+                        <option value="customer_service" ${u.role==='customer_service' ? 'selected':''}>Customer_Service</option>
+                        <option value="user" ${u.role==='user' ? 'selected':''}>User</option>
                     </select>
                 </td>
                 <td>
