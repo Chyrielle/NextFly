@@ -26,7 +26,7 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
 
 <nav>
     <button onclick="location.href='beranda.php'">Beranda</button>
-    <button onclick="location.href='editor.php'">Editor</button>
+    <button onclick="location.href='customer_service.php'">Customer_Service</button>
     <button onclick="doLogout()" style="background:#e53935">Logout</button>
 </nav>
 
@@ -76,7 +76,7 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
                 <td>
                     <select id="role-${u.id}">
                         <option value="admin"  ${u.role==='admin'  ? 'selected':''}>Admin</option>
-                        <option value="editor" ${u.role==='editor' ? 'selected':''}>Editor</option>
+                        <option value="editor" ${u.role==='customer_service' ? 'selected':''}>Customer_Service</option>
                         <option value="viewer" ${u.role==='viewer' ? 'selected':''}>Viewer</option>
                     </select>
                 </td>
