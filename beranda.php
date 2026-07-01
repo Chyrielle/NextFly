@@ -41,6 +41,6 @@ echo "hello pengunjung";
 <form action="customer_service.php" method="GET"><button type="submit">Customer_Service</button></form>
 <?php endif; ?>
 
-<?php if ($_SESSION['role'] === 'editor'): ?>
+<?php if ($_SESSION['role'] === 'customer_service'): ?>
 <form action="customer_service.php" method="GET"><button type="submit">Customer_Service</button></form>
 <?php endif; ?>
