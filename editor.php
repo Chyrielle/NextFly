@@ -13,7 +13,7 @@ if(time() > $_SESSION['expire']){
     exit();
 }
 $role = $_SESSION['role'] ?? '';
-if (!isset($_SESSION['login']) || !in_array($role, ['admin', 'editor'])) {
+if (!isset($_SESSION['login']) || !in_array($role, ['admin', 'customer_service'])) {
     header("location: login.html");
     exit();
 }
