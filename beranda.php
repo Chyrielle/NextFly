@@ -38,9 +38,9 @@ echo "hello pengunjung";
 ?>
 <?php if ($_SESSION['role'] === 'admin'): ?>
 <form action="admin.php" method="GET"><button type="submit">Admin</button></form>
-<form action="editor.php" method="GET"><button type="submit">Editor</button></form>
+<form action="customer_service.php" method="GET"><button type="submit">Customer_Service</button></form>
 <?php endif; ?>
 
 <?php if ($_SESSION['role'] === 'editor'): ?>
-<form action="editor.php" method="GET"><button type="submit">Editor</button></form>
+<form action="customer_service.php" method="GET"><button type="submit">Customer_Service</button></form>
 <?php endif; ?>
