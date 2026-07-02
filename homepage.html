@@ -1,9 +1,169 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nextfly — Anda Nyaman, Kami Senang</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Poppins', sans-serif; color: #1b3b3b; }
 
-    </head>
-    <body>
-        <button onclick="window.location.href='register.html'" style="background: teal; margin-top:8px; color: white">daftar</button>
-        <button onclick="window.location.href='login.html'" style="background:#666; margin-top:8px; color: white">login</button>
-    </body>
+  /* NAVBAR */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 40px; position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  }
+  nav .logo { color: #fff; font-size: 22px; font-weight: 700; }
+  nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 14px; }
+  nav .btn {
+    background: #e8664b; padding: 8px 18px; border-radius: 20px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(rgba(10,50,45,0.45), rgba(10,50,45,0.6)),
+                url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600') center/cover;
+    min-height: 640px;
+    color: #fff;
+    text-align: center;
+    padding: 140px 20px 60px;
+  }
+  .hero h1 { font-size: 34px; font-weight: 600; }
+  .hero p { margin-top: 10px; opacity: 0.9; }
+
+  /* TAB TIKET */
+  .tabs {
+    margin-top: 34px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+  }
+  .tabs button {
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);
+    color: #fff; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 14px;
+  }
+  .tabs button.active { background: #fff; color: #1b3b3b; font-weight: 600; }
+
+  /* SEARCH BOX */
+  .search-box {
+    max-width: 800px; margin: 24px auto 0; background: #fff; border-radius: 16px;
+    display: flex; flex-wrap: wrap; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .search-box .field {
+    flex: 1; min-width: 180px; padding: 16px 18px; text-align: left; border-right: 1px solid #eee;
+  }
+  .search-box .field label { display: block; font-size: 11px; color: #888; margin-bottom: 4px; }
+  .search-box .field input {
+    border: none; outline: none; width: 100%; font-family: 'Poppins'; font-size: 14px; color: #1b3b3b;
+  }
+  .search-box button {
+    background: #e8664b; color: #fff; border: none; padding: 0 30px; font-weight: 600; cursor: pointer;
+  }
+
+  .tagline { margin-top: 40px; font-size: 18px; font-style: italic; }
+
+  /* SECTIONS */
+  section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; }
+  section h2 { font-size: 26px; margin-bottom: 24px; text-align: center; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .card {
+    background: #f4f1ea; border-radius: 14px; padding: 24px; text-align: center;
+  }
+  .card h3 { font-size: 17px; margin: 10px 0 6px; }
+  .card p { font-size: 13.5px; color: #555; }
+
+  footer { background: #0e3b38; color: #fff; text-align: center; padding: 24px; font-size: 13px; }
+
+  @media (max-width: 700px) {
+    nav a, nav .btn { display: none; }
+    .search-box .field { border-right: none; border-bottom: 1px solid #eee; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Nextfly</div>
+  <div>
+    <a href="login.html">Masuk</a>
+    <a href="register.html" class="btn">Daftar</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Halo, mau kemana hari ini?</h1>
+  <p>Pesan hotel, pesawat, kereta, dan bus dalam satu tempat.</p>
+
+  <div class="tabs" id="tabs">
+    <button class="active" data-tab="Hotel">🏨 Hotel</button>
+    <button data-tab="Pesawat">✈️ Pesawat</button>
+    <button data-tab="Kereta">🚆 Kereta</button>
+    <button data-tab="Bus">🚌 Bus</button>
+  </div>
+
+  <form class="search-box" id="form">
+    <div class="field">
+      <label id="destLabel">Hotel Tujuan</label>
+      <input type="text" placeholder="Kota, Provinsi, Negara">
+    </div>
+    <div class="field">
+      <label>Tanggal</label>
+      <input type="text" placeholder="Check in & Check out">
+    </div>
+    <div class="field">
+      <label id="guestLabel">Tamu dan Kamar</label>
+      <input type="text" placeholder="Usia & Kamar">
+    </div>
+    <button type="submit">Cari</button>
+  </form>
+
+  <p class="tagline">"Anda Nyaman, Kami Senang"</p>
+</div>
+
+<section>
+  <h2>Kenapa Pilih Nextfly?</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Harga Transparan</h3>
+      <p>Tidak ada biaya tambahan mendadak saat pembayaran.</p>
+    </div>
+    <div class="card">
+      <h3>Booking Cepat</h3>
+      <p>Pesan tiket hanya dalam beberapa menit.</p>
+    </div>
+    <div class="card">
+      <h3>Dukungan 24 Jam</h3>
+      <p>Tim CS kami siap membantu kapan pun dibutuhkan.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Nextfly. Semua hak dilindungi.
+</footer>
+
+<script>
+  const labels = {
+    Hotel:   { dest: "Hotel Tujuan", guest: "Tamu dan Kamar" },
+    Pesawat: { dest: "Kota Tujuan", guest: "Penumpang" },
+    Kereta:  { dest: "Stasiun Tujuan", guest: "Penumpang" },
+    Bus:     { dest: "Terminal Tujuan", guest: "Penumpang" },
+  };
+
+  document.querySelectorAll('#tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const key = btn.dataset.tab;
+      document.getElementById('destLabel').textContent = labels[key].dest;
+      document.getElementById('guestLabel').textContent = labels[key].guest;
+    });
+  });
+
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    window.location.href = 'role/user/booking page.html';
+  });
+</script>
+
+</body>
 </html>

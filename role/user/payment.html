@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran - Nextfly</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Poppins', sans-serif; color: #1b3b3b; background: #f4f1ea; }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAVBAR */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 40px; background: #0e3b38; color: #fff;
+  }
+  nav .logo { font-size: 20px; font-weight: 700; }
+  nav .menu { display: flex; align-items: center; gap: 24px; font-size: 14px; }
+  nav .menu a:hover { color: #e8664b; }
+  nav .avatar {
+    width: 34px; height: 34px; border-radius: 50%; background: #e8664b;
+    display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px;
+  }
+
+  main { padding: 32px 40px; max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 24px; margin-bottom: 4px; }
+  main > p.sub { color: #556; font-size: 14px; margin-bottom: 24px; }
+
+  .layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: start; }
+
+  .box {
+    background: #fff; border-radius: 16px; padding: 22px 24px; box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  }
+  .box h2 { font-size: 16px; margin-bottom: 16px; }
+
+  /* RINGKASAN PESANAN */
+  .item-detail { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; }
+  .item-detail .icon {
+    width: 46px; height: 46px; border-radius: 12px; background: #e8f5f3;
+    display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+  }
+  .item-detail h3 { font-size: 15px; margin-bottom: 3px; }
+  .item-detail p { font-size: 13px; color: #667; }
+
+  .row { display: flex; justify-content: space-between; font-size: 13.5px; padding: 8px 0; color: #445; }
+  .row.total { border-top: 1px dashed #ddd; margin-top: 8px; padding-top: 14px; font-weight: 700; font-size: 15px; color: #0e3b38; }
+
+  /* METODE PEMBAYARAN */
+  .method {
+    display: flex; align-items: center; gap: 12px; border: 1.5px solid #eee; border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 12px; cursor: pointer; font-size: 14px;
+  }
+  .method input { accent-color: #e8664b; width: 16px; height: 16px; }
+  .method .icon { font-size: 18px; }
+  .method.selected { border-color: #e8664b; background: #fff6f4; }
+
+  .pay-btn {
+    width: 100%; background: #e8664b; color: #fff; border: none; padding: 14px;
+    border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px;
+  }
+  .pay-btn:hover { background: #d1553d; }
+
+  .note { font-size: 12px; color: #889; margin-top: 10px; text-align: center; }
+
+  @media (max-width: 800px) {
+    nav .menu { display: none; }
+    main { padding: 24px 18px; }
+    .layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Nextfly</div>
+  <div class="menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="booking page.html">Booking</a>
+    <a href="payment.html">Pembayaran</a>
+    <a href="../../login.html">Keluar</a>
+  </div>
+  <div class="avatar">U</div>
+</nav>
+
+<main>
+  <h1>Pembayaran</h1>
+  <p class="sub">Periksa kembali pesananmu sebelum melanjutkan pembayaran.</p>
+
+  <div class="layout">
+    <div class="box">
+      <h2>Ringkasan Pesanan</h2>
+      <div class="item-detail">
+        <div class="icon">🏨</div>
+        <div>
+          <h3>Grand Ocean Hotel</h3>
+          <p>Nusa Penida, Bali · 2 malam</p>
+        </div>
+      </div>
+      <div class="row"><span>Check in</span><span>12 Juli 2026</span></div>
+      <div class="row"><span>Check out</span><span>14 Juli 2026</span></div>
+      <div class="row"><span>Tamu</span><span>2 Dewasa, 1 Kamar</span></div>
+      <div class="row"><span>Harga kamar (2 malam)</span><span>Rp 1.380.000</span></div>
+      <div class="row"><span>Pajak & biaya layanan</span><span>Rp 82.000</span></div>
+      <div class="row total"><span>Total Pembayaran</span><span>Rp 1.462.000</span></div>
+    </div>
+
+    <div class="box">
+      <h2>Metode Pembayaran</h2>
+
+      <label class="method selected">
+        <input type="radio" name="pay" checked>
+        <span class="icon">🏦</span>
+        <span>Transfer Bank</span>
+      </label>
+      <label class="method">
+        <input type="radio" name="pay">
+        <span class="icon">📱</span>
+        <span>E-Wallet (OVO / GoPay / DANA)</span>
+      </label>
+      <label class="method">
+        <input type="radio" name="pay">
+        <span class="icon">💳</span>
+        <span>Kartu Kredit / Debit</span>
+      </label>
+
+      <a href="dashboard.html">
+        <button type="button" class="pay-btn">Bayar Sekarang</button>
+      </a>
+      <p class="note">Pembayaran diproses secara aman oleh Nextfly.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+  document.querySelectorAll('.method').forEach(m => {
+    m.addEventListener('click', () => {
+      document.querySelectorAll('.method').forEach(x => x.classList.remove('selected'));
+      m.classList.add('selected');
+      m.querySelector('input').checked = true;
+    });
+  });
+</script>
+
+</body>
+</html>
