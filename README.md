@@ -21,113 +21,36 @@ Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 
 ## Struktur Folder
 
-```
-travel-ticket-booking/
-│
-├── assets/                          ← Lidya
-│   ├── css/
-│   │   ├── style.css
-│   │   ├── login.css
-│   │   ├── register.css
-│   │   ├── dashboard.css
-│   │   ├── booking.css
-│   │   ├── payment.css
-│   │   ├── admin.css
-│   │   └── responsive.css
-│   │
-│   ├── js/
-│   │   ├── script.js
-│   │   ├── validation.js
-│   │   └── booking.js
-│   │
-│   ├── images/
-│   └── icons/
-│
-├── config/                          ← Bram
-│   ├── database.php
-│   ├── session.php
-│   ├── config.php
-│   └── roles.php
-│
-├── controllers/
-│   ├── AuthController.php           ← Arya
-│   ├── BookingController.php        ← Ajus
-│   ├── PaymentController.php        ← Yoga
-│   ├── UserController.php
-│   └── AdminController.php          ← Bram
-│
-├── models/
-│   ├── User.php
-│   ├── Ticket.php
-│   ├── Booking.php
-│   ├── Payment.php
-│   └── Passenger.php
-│
-├── middleware/                      ← Bram
-│   ├── auth.php
-│   ├── admin.php
-│   ├── user.php
-│   └── validation.php
-│
-├── mail/                            ← Arya & Yoga
-│   ├── PHPMailer/
-│   ├── MailConfig.php
-│   ├── RegisterMail.php
-│   ├── VerificationMail.php
-│   ├── TransactionMail.php
-│   └── InvoiceMail.php
-│
-├── views/
-│   ├── layouts/                     ← Lidya
-│   │   ├── header.php
-│   │   ├── navbar.php
-│   │   ├── sidebar.php
-│   │   └── footer.php
-│   │
-│   ├── auth/                        ← Arya + Lidya
-│   │   ├── login.php
-│   │   ├── register.php
-│   │   ├── verify.php
-│   │   └── forgot-password.php
-│   │
-│   ├── booking/                     ← Ajus + Lidya
-│   │   ├── search.php
-│   │   ├── flight.php
-│   │   ├── train.php
-│   │   ├── bus.php
-│   │   ├── passenger.php
-│   │   └── checkout.php
-│   │
-│   ├── payment/                     ← Yoga + Lidya
-│   │   ├── payment.php
-│   │   ├── success.php
-│   │   ├── failed.php
-│   │   └── invoice.php
-│   │
-│   ├── user/
-│   │   ├── dashboard.php
-│   │   ├── history.php
-│   │   └── profile.php
-│   │
-│   └── admin/                       ← Bram
-│       ├── dashboard.php
-│       ├── users.php
-│       ├── bookings.php
-│       ├── payments.php
-│       ├── schedules.php
-│       └── reports.php
-│
-├── database/                        ← Bram
-│   ├── database.sql
-│   └── dummy.sql
-│
-├── uploads/
-│   ├── profile/
-│   └── payment-proof/
-│
+Nextfly/
+├── api/                      ←Arya
+│   ├── login.php             
+│   ├── logout.php            
+│   └── users.php             
+├── classes/                  ←Arya & Bram
+│   └── infouser.php          
+├── config/                   ←Arya
+│   └── database.php          
+├── role/
+│   ├── user/                 ←Lidya, Ajuz, Yoga, & Bram
+│   │   ├── dashboard.html    
+│   │   ├── user.php          
+│   │   ├── booking page.html 
+│   │   ├── booking.php       
+│   │   ├── payment.html      
+│   │   └── payment.php       
+│   ├── costumer service/     ←Lidya & Bram
+│   │   ├── dashboard.html    
+│   │   ├── CS.php            
+│   │   ├── reports.php       
+│   │   └── history.php       
+│   └── admin/                ←Lidya & Bram
+│   │   ├── dashboard.html    
+│   │   └── admin.php         
 ├── vendor/
-│
-├── index.php
-├── composer.json
-├── README.md
-└── .gitignore
+├── login.html                ←Arya
+├── register.html             ←Arya
+├── register.php              ←Arya
+├── composer.json             ←Arya
+├── composer.lock             ←Arya
+├── homepage.html             ←Arya & Lidya
+└── Readme.md
