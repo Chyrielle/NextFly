@@ -61,8 +61,15 @@ mysqli_stmt_bind_param(
 
 if (mysqli_stmt_execute($stmt))
 {
-    $email = "felloniasmith@gmail.com"; 
+   $query = mysqli_query($conn, "SELECT email FROM users WHERE id='$user_id'");
 
+if(mysqli_num_rows($query) == 0){
+    die("User tidak ditemukan.");
+}
+
+$user = mysqli_fetch_assoc($query);
+
+$email = $user['email'];
     if (sendTransactionEmail(
         $email,
         $booking_code,
