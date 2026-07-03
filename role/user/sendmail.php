@@ -36,7 +36,7 @@ function sendTransactionEmail(
         
 
         $mail->setFrom(
-            'pratayoga56@gmail.com',
+            'felloniasmith@gmail.com',
             'NextFly'
         );
 
