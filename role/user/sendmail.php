@@ -26,9 +26,9 @@ function sendTransactionEmail(
         $mail->SMTPAuth = true;
 
        
-        $mail->Username = 'pratayoga56@gmail.com';
+        $mail->Username = 'felloniasmith@gmail.com';
 
-        $mail->Password = 'wvfh cbbc yoya puyf';
+        $mail->Password = 'yqhnsvvpgzrtaywm';
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
