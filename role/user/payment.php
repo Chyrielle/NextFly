@@ -2,7 +2,7 @@
 
 
 require_once "../../config/database.php";
-require_once "../../mail/sendMail.php";
+require_once "sendMail.php";
 
 $booking_code = $_POST['booking_code'];
 $user_id = $_POST['user_id'];
