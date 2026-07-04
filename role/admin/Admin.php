@@ -151,6 +151,61 @@ if($result){
     </table>
 </div>
 
+<hr>
+
+<h2>Monitoring Transaksi</h2>
+
+<table border="1" cellpadding="8">
+
+    <tr>
+        <th>Kode Booking</th>
+        <th>Kode Transaksi</th>
+        <th>Layanan</th>
+        <th>Total</th>
+        <th>Status</th>
+    </tr>
+
+<?php
+
+$result = $conn->query(
+    "SELECT *
+     FROM transactions
+     ORDER BY created_at DESC"
+);
+
+if($result && $result->num_rows > 0){
+
+    while($trx = $result->fetch_assoc()){
+
+        echo "
+        <tr>
+            <td>{$trx['booking_code']}</td>
+            <td>{$trx['transaction_code']}</td>
+            <td>{$trx['service_type']}</td>
+            <td>Rp ".number_format($trx['total'],0,',','.')."</td>
+            <td>{$trx['status']}</td>
+        </tr>";
+
+    }
+
+}
+else{
+
+    echo '
+    <tr>
+        <td colspan="5">
+            Belum ada transaksi.
+        </td>
+    </tr>';
+
+}
+
+?>
+
+</table>
+
+<hr>
+    
 <script>
     async function loadUsers() {
         const res  = await fetch('../../api/users.php', { method: 'GET' });
