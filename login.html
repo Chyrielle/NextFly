@@ -78,7 +78,9 @@
                 localStorage.setItem('username', result.username);
 
                 if (result.role === 'admin')       window.location.href = 'role/admin/Admin.php';
+                    
                 else if (result.role === 'customer_service') window.location.href = 'role/customer-service/CS.php';
+                    
                 else                               window.location.href = 'role/user/User.php';
             } else {
                 pesan.textContent = result.message;
