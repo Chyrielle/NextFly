@@ -37,8 +37,8 @@ $result = $conn->query(
 
 <h1>Riwayat Report</h1>
 
-<a href="CS.php">
-    Kembali
+<a href="../admin/Admin.php">
+    Kembali ke Admin
 </a>
 
 <hr>
