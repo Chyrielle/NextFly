@@ -23,6 +23,84 @@ if (time() > ($_SESSION['expire'] ?? 0)) {
 <h1>Dashboard Admin</h1>
 <p>Halo, <strong><?= htmlspecialchars($_SESSION['user']) ?></strong>!</p>
 
+    <?php
+
+require_once "../../config/database.php";
+
+$db = new Database();
+$conn = $db->conn;
+
+$totalUser = 0;
+$totalCS = 0;
+$totalTransaksi = 0;
+$totalPendapatan = 0;
+
+$result = $conn->query(
+    "SELECT COUNT(*) as total
+     FROM users
+     WHERE role='customer_service'"
+);
+
+if($result){
+    $totalCS = $result->fetch_assoc()['total'];
+}
+
+$result = $conn->query(
+    "SELECT COUNT(*) as total
+     FROM users"
+);
+
+if($result){
+    $totalUser = $result->fetch_assoc()['total'];
+}
+
+$result = $conn->query(
+    "SELECT COUNT(*) as total
+     FROM transactions"
+);
+
+if($result){
+    $totalTransaksi = $result->fetch_assoc()['total'];
+}
+
+$result = $conn->query(
+    "SELECT SUM(total) as pendapatan
+     FROM transactions"
+);
+
+if($result){
+    $row = $result->fetch_assoc();
+    $totalPendapatan = $row['pendapatan'] ?? 0;
+}
+
+?>
+
+<hr>
+
+<h2>Statistik Sistem</h2>
+
+<p>
+    Total User :
+    <b><?= $totalUser ?></b>
+</p>
+
+<p>
+    Total Customer Service :
+    <b><?= $totalCS ?></b>
+</p>
+
+<p>
+    Total Transaksi :
+    <b><?= $totalTransaksi ?></b>
+</p>
+
+<p>
+    Total Pendapatan :
+    <b>Rp <?= number_format($totalPendapatan,0,",",".") ?></b>
+</p>
+
+<hr>
+    
 <nav>
     <button onclick="location.href='../user/User.php'">User</button>
     <button onclick="location.href='../customer-service/CS.php'">Customer_Service</button>
