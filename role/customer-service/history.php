@@ -37,9 +37,19 @@ $result = $conn->query(
 
 <h1>Riwayat Report</h1>
 
+<?php if ($_SESSION['role'] === 'admin'): ?>
+
 <a href="../admin/Admin.php">
     Kembali ke Admin
 </a>
+
+<?php else: ?>
+
+<a href="CS.php">
+    Kembali ke Customer Service
+</a>
+
+<?php endif; ?>
 
 <hr>
 
