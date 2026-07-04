@@ -40,13 +40,13 @@ $result = $conn->query(
 <?php if ($_SESSION['role'] === 'admin'): ?>
 
 <a href="../admin/Admin.php">
-    Kembali ke Admin
+    ← Kembali ke Dashboard Admin
 </a>
 
 <?php else: ?>
 
 <a href="CS.php">
-    Kembali ke Customer Service
+    ← Kembali ke Dashboard Customer Service
 </a>
 
 <?php endif; ?>
