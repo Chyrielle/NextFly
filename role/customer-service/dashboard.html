@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Customer Service</title>
 
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            padding:40px;
+        }
+
+        .container{
+            max-width:800px;
+            margin:auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.1);
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .menu{
+            display:flex;
+            gap:15px;
+            flex-wrap:wrap;
+            margin-top:30px;
+        }
+
+        .menu button{
+            padding:12px 20px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            color:white;
+            font-weight:bold;
+        }
+
+        .report{
+            background:#1976d2;
+        }
+
+        .history{
+            background:#388e3c;
+        }
+
+        .logout{
+            background:#d32f2f;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Dashboard Customer Service</h1>
+
+    <p>
+        Menu Customer Service NextFly
+    </p>
+
+    <div class="menu">
+
+        <button
+            class="report"
+            onclick="window.location.href='reports.php'">
+            Kelola Report
+        </button>
+
+        <button
+            class="history"
+            onclick="window.location.href='history.php'">
+            Riwayat Report
+        </button>
+
+        <button
+            class="logout"
+            onclick="window.location.href='../../login.html'">
+            Logout
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+</html>
