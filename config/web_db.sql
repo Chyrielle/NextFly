@@ -61,11 +61,30 @@ CREATE TABLE `transactions` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(1, 'Yanto Tarmiji', 'e10adc3949ba59abbe56e057f20f883e', 'admin'),
-(2, 'Zaki Indomie', 'e10adc3949ba59abbe56e057f20f883e', 'customer_service'),
-(3, 'Rusdi Ngawi', 'e10adc3949ba59abbe56e057f20f883e', 'user');
-
+INSERT INTO `users`
+(`id`, `username`, `email`, `password`, `role`)
+VALUES
+(
+1,
+'Yanto Tarmiji',
+'admin@nextfly.com',
+'e10adc3949ba59abbe56e057f20f883e',
+'admin'
+),
+(
+2,
+'Zaki Indomie',
+'cs@nextfly.com',
+'e10adc3949ba59abbe56e057f20f883e',
+'customer_service'
+),
+(
+3,
+'Rusdi Ngawi',
+'user@nextfly.com',
+'e10adc3949ba59abbe56e057f20f883e',
+'user'
+);
 --
 -- Indexes for dumped tables
 --
