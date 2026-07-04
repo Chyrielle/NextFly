@@ -34,6 +34,28 @@ CREATE TABLE `users` (
   `role` enum('admin','customer_service','user') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `reports` (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    answer TEXT DEFAULT NULL,
+    status ENUM('pending','answered') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `transactions` (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    booking_code VARCHAR(50),
+    transaction_code VARCHAR(50),
+    user_id INT,
+    service_type VARCHAR(100),
+    total DECIMAL(12,2),
+    payment_method VARCHAR(100),
+    status VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 --
 -- Dumping data untuk tabel `users`
 --
