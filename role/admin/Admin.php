@@ -102,11 +102,26 @@ if($result){
 <hr>
     
 <nav>
-    <button onclick="location.href='../user/User.php'">User</button>
-    <button onclick="location.href='../customer-service/CS.php'">Customer_Service</button>
-    <button onclick="doLogout()" style="background:#e53935">Logout</button>
-</nav>
+    <button onclick="location.href='../user/User.php'">
+        User
+    </button>
 
+    <button onclick="location.href='../customer-service/CS.php'">
+        Customer_Service
+    </button>
+
+    <button onclick="location.href='../customer-service/reports.php'">
+        Data Report
+    </button>
+
+    <button onclick="location.href='../customer-service/history.php'">
+        Riwayat Report
+    </button>
+
+    <button onclick="doLogout()" style="background:#e53935">
+        Logout
+    </button>
+</nav>
 <div>
     <h2>Tambah User</h2>
     <p id="pesan"></p>
