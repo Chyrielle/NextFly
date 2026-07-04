@@ -24,7 +24,7 @@ echo "hello editor";
 <form action="../user/User.php" method="GET"><button type="submit">User</button></form>
 <?php endif; ?>
 
-<?php if ($_SESSION['role'] === 'editor'): ?>
-<form action="../user/User.php" method="GET"><button type="submit">User</button></form>
+<?php if ($_SESSION['role'] === 'customer_service'): ?>
+<form action="../customer_service/Customer_Service.php" method="GET"><button type="submit">Customer_Service</button></form>
 <?php endif; ?>
 
