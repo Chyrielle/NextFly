@@ -17,7 +17,7 @@ if (!isset($_SESSION['login']) || !in_array($role, ['admin', 'customer_service']
     header("location: ../../login.html");
     exit();
 }
-echo "hello Customer Service";
+echo "Dashboard Customer Service";
 ?>
 <?php if ($_SESSION['role'] === 'admin'): ?>
 <form action="../admin/Admin.php" method="GET"><button type="submit">Admin</button></form>
