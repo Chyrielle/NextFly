@@ -54,5 +54,5 @@ Nextfly/
 ├── composer.json             ← Arya
 ├── composer.lock             ← Arya
 ├── homepage.html             ← Arya & Lidya
-├── style.css                 ← Lidya
+├── style.css                 ← Arya & Lidya
 └── README.md
