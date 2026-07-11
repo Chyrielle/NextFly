@@ -1,9 +1,9 @@
-# Project Herdian
+# Project Herdian - Next Fly
 # Kelompok-5 Sistem Booking Tiket Perjalanan
 
 Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 
-> Sistem untuk booking tiket travel seperti bus, kereta, dan juga pesawat beserta booking hotel
+> Sistem untuk booking tiket travel seperti bus, kereta, pesawat, serta booking hotel secara online
 
 ---
 
@@ -13,7 +13,7 @@ Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 |----|------|-----|-------|
 | 1 | Made Arya Dharma Putra Mahothama | 250030020 | Login & Registration |
 | 2 | I Gusti Agung Bramantha Prana Citra J. | 250030061 | All Validation Value Role |
-| 3 | I Putu Yoga Pratama | 250030062 | Transaction PHPmailer Gmail |
+| 3 | I Putu Yoga Pratama | 250030062 | Transaction PHPMailer Gmail |
 | 4 | Gede Agung Bagus Aryadinatha | 250030094 | Application Workflow |
 | 5 | I Dewa Agung Ayu Lidya Aristawati | 250030485 | Desainer |
 
@@ -53,4 +53,4 @@ Nextfly/
 ├── composer.json             ←Arya
 ├── composer.lock             ←Arya
 ├── homepage.html             ←Arya & Lidya
-└── Readme.md
+└── README.md
