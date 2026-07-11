@@ -189,7 +189,7 @@ $namaCS = $_SESSION['nama'] ?? 'Customer Service';
   <section>
     <h2>Akses Lain (Admin)</h2>
     <div class="quick-actions">
-      <form action="../admin/admin.php" method="GET">
+      <form action="../admin/Admin.php" method="GET">
         <button type="submit">Buka Dashboard Admin</button>
       </form>
       <form action="../user/user.php" method="GET">
