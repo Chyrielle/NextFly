@@ -9,7 +9,7 @@ $db   = new Database();
 $conn = $db->conn;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+    
     $booking_code   = $_POST['booking_code'];
     $user_id        = $_POST['user_id'];
     $service_type   = $_POST['service_type'];
