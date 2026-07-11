@@ -193,7 +193,7 @@ $user_id      = $_SESSION['user_id'] ?? '';
    <a href="User.php">Dashboard</a>
 <a href="booking-page.html">Booking</a>
 <a href="payment.php">Pembayaran</a>
-<a href="../../api/logout.php">Keluar</a>
+<a href="#" onclick="logoutUser(); return false;">Keluar</a>
   </div>
   <div class="avatar">U</div>
 </nav>
