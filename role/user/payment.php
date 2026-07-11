@@ -4,7 +4,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once "../../config/database.php";
 require_once "sendmail.php";
+if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'user') {
+    header("Location: ../../login.html");
+    exit;
+}
 
+require_once "../../config/database.php";
+require_once "sendmail.php";
 $db   = new Database();
 $conn = $db->conn;
 
