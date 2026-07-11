@@ -92,7 +92,7 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'Pengguna');
 
 <main>
   <?php if ($_SESSION['role'] === 'admin'): ?>
-    <a class="back-link" href="../admin/admin.php">← Kembali ke Dashboard Admin</a>
+    <a class="back-link" href="../admin/Admin.php">← Kembali ke Dashboard Admin</a>
   <?php else: ?>
     <a class="back-link" href="CS.php">← Kembali ke Dashboard Customer Service</a>
   <?php endif; ?>
