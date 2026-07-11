@@ -182,10 +182,10 @@ $user_id      = $_SESSION['user_id'] ?? '';
 <nav>
   <div class="logo">Nextfly</div>
   <div class="menu">
-    <a href="user.php">Dashboard</a>
-    <a href="booking.php">Booking</a>
-    <a href="payment.php">Pembayaran</a>
-    <a href="../../logout.php">Keluar</a>
+   <a href="User.php">Dashboard</a>
+<a href="booking-page.html">Booking</a>
+<a href="payment.php">Pembayaran</a>
+<a href="../../api/logout.php">Keluar</a>
   </div>
   <div class="avatar">U</div>
 </nav>
