@@ -106,6 +106,8 @@ $lokasi       = $_GET['lokasi'] ?? 'Nusa Penida, Bali';
 $total        = $_GET['total'] ?? 1462000;
 $user_id      = $_SESSION['user_id'] ?? '';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
