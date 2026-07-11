@@ -72,7 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $user = mysqli_fetch_assoc($query);
         $email = $user['email'];
-
+        
+ echo "<pre>";
+        echo "user_id yang dipakai: [" . $user_id . "]\n";
+        echo "email yang ditemukan: [" . $email . "]\n";
+        echo "isi session: ";
+        print_r($_SESSION);
+        echo "</pre>";
+        die();
+        
         if (sendTransactionEmail(
             $email,
             $booking_code,
