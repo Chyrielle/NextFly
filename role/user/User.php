@@ -133,7 +133,7 @@ $namaUser = $_SESSION['nama'] ?? 'User';
     <a href="user.php">Dashboard</a>
     <a href="booking.php">Booking</a>
     <a href="payment.php">Pembayaran</a>
-    <a href="../../logout.php">Keluar</a>
+    <a href="#" onclick="logoutUser(); return false;">Keluar</a>
   </div>
   <div class="user">
     <div class="avatar"><?php echo strtoupper(substr($namaUser, 0, 1)); ?></div>
@@ -247,5 +247,17 @@ $namaUser = $_SESSION['nama'] ?? 'User';
   <?php endif; ?>
 </main>
 
+<script>
+  function logoutUser() {
+    fetch("../../api/logout.php", { method: "POST" })
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = "../../login.html";
+      })
+      .catch(() => {
+        window.location.href = "../../login.html";
+      });
+  }
+</script>
 </body>
 </html>
