@@ -29,16 +29,17 @@ Nextfly/
 ├── classes/                  ←Arya & Bram
 │   └── infouser.php          
 ├── config/                   ←Arya
-│   └── database.php          
+│   ├── database.php
+│   └── web_db.sql          
 ├── role/
 │   ├── user/                 ←Lidya, Ajuz, Yoga, & Bram
 │   │   ├── dashboard.html    
 │   │   ├── user.php          
-│   │   ├── booking page.html 
+│   │   ├── booking-page.html 
 │   │   ├── booking.php       
 │   │   ├── payment.html      
-│   │   └── payment.php       
-│   ├── costumer service/     ←Lidya & Bram
+│   │   └── sendmail.php       
+│   ├── costumer-service/     ←Lidya & Bram
 │   │   ├── dashboard.html    
 │   │   ├── CS.php            
 │   │   ├── reports.php       
