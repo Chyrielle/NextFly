@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $status
         ))
         {
-            header("Location: history.php");
+            header("Location: User.php");
             exit;
         }
         else
