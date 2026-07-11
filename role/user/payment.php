@@ -5,6 +5,9 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once "../../config/database.php";
 require_once "sendmail.php";
 
+$db   = new Database();
+$conn = $db->conn;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $booking_code   = $_POST['booking_code'];
