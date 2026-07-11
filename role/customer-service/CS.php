@@ -192,7 +192,7 @@ $namaCS = $_SESSION['nama'] ?? 'Customer Service';
       <form action="../admin/Admin.php" method="GET">
         <button type="submit">Buka Dashboard Admin</button>
       </form>
-      <form action="../user/user.php" method="GET">
+      <form action="../user/User.php" method="GET">
         <button type="submit">Buka Dashboard User</button>
       </form>
     </div>
