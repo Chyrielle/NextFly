@@ -162,7 +162,17 @@
 
   function renderResults(key) {
     const container = document.getElementById('resultList');
-    container.innerHTML = results[key].map(item => `
+    container.innerHTML = results[key].map(item => {
+      const totalNumber = item.harga.replace(/[^0-9]/g, '');
+      const lokasi = item.ket.split(' · ')[0];
+      const params = new URLSearchParams({
+        nama_layanan: item.nama,
+        lokasi: lokasi,
+        total: totalNumber,
+        service_type: key
+      });
+
+      return `
       <div class="result-card">
         <div class="info">
           <div class="icon">${item.icon}</div>
@@ -174,10 +184,12 @@
         <div class="price">
           <div class="amount">${item.harga}</div>
           <div class="unit">${item.satuan}</div>
-          <a href="payment.php"><button type="button" class="select-btn">Pilih</button></a>
+          <a href="payment.php?${params.toString()}"><button type="button" class="select-btn">Pilih</button></a>
         </div>
       </div>
-    `).join('');
+      `;
+    }).join('');
+  }
   }
 
   document.querySelectorAll('#tabs button').forEach(btn => {
