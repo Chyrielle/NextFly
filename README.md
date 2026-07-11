@@ -1,5 +1,5 @@
 # Project Herdian - Next Fly
-# Kelompok-5 Sistem Booking Tiket Perjalanan
+# Kelompok 5 Sistem Booking Tiket Perjalanan dan Reservasi
 
 Project mata kuliah **Pengembangan Sistem Backend (SI253314)** — Kelompok 5
 
