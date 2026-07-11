@@ -24,8 +24,8 @@ if (empty($username) || empty($password) || empty($email)) {
 $db   = new Database();
 $conn = $db->conn;
 
-$stmt = $conn->prepare("INSERT INTO users (username, password, role) VALUES (?, MD5(?), ?)");
-$stmt->bind_param("sss", $username, $password, $role);
+$stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, MD5(?), ?)");
+$stmt->bind_param("ssss", $username, $email, $password, $role);
 $stmt->execute();
 
 $mail = new PHPMailer(true);
