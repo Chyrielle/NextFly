@@ -39,11 +39,12 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 if ($user) {
-    $_SESSION['login'] = true;
-    $_SESSION['user']  = $user['username'];
-    $_SESSION['role']  = $user['role'];
-    $_SESSION['expire'] = time() + 3600; 
-
+$_SESSION['login'] = true;
+$_SESSION['user']  = $user['username'];
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['role']  = $user['role'];
+$_SESSION['expire'] = time() + 3600;
+    
     sendResponse(200, [
         "success"  => true,
         "message"  => "Login berhasil",
