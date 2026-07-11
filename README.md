@@ -22,36 +22,38 @@ Project Mata Kuliah **Pengembangan Sistem Backend (SI253314)**
 ## Struktur Folder
 ```
 Nextfly/
-├── api/                      ←Arya
+├── api/                      ← Arya
 │   ├── login.php             
 │   ├── logout.php            
 │   └── users.php             
-├── classes/                  ←Arya & Bram
+├── classes/                  ← Arya & Bram
 │   └── infouser.php          
-├── config/                   ←Arya
+├── config/                   ← Arya
 │   ├── database.php
 │   └── web_db.sql          
 ├── role/
-│   ├── user/                 ←Lidya, Ajuz, Yoga, & Bram
+│   ├── user/                 ← Lidya, Ajuz, Yoga, & Bram
 │   │   ├── dashboard.html    
 │   │   ├── user.php          
 │   │   ├── booking-page.html 
 │   │   ├── booking.php       
 │   │   ├── payment.html      
 │   │   └── sendmail.php       
-│   ├── costumer-service/     ←Lidya & Bram
+│   ├── costumer-service/     ← Lidya & Bram
 │   │   ├── dashboard.html    
 │   │   ├── CS.php            
 │   │   ├── reports.php       
 │   │   └── history.php       
-│   └── admin/                ←Lidya & Bram
+│   └── admin/                ← Lidya & Bram
 │   │   ├── dashboard.html    
 │   │   └── admin.php         
 ├── vendor/
-├── login.html                ←Arya
-├── register.html             ←Arya
-├── register.php              ←Arya
-├── composer.json             ←Arya
-├── composer.lock             ←Arya
-├── homepage.html             ←Arya & Lidya
+├── login.html                ← Arya
+├── register.html             ← Arya
+├── register.php              ← Arya
+├── composer.json             ← Arya
+├── composer.lock             ← Arya
+├── homepage.html             ← Arya & Lidya
+├── payment.html              ← 
+├── style.css                 ← Lidya
 └── README.md
