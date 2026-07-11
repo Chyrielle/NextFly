@@ -130,7 +130,7 @@ $namaUser = $_SESSION['nama'] ?? 'User';
 <nav>
   <div class="logo">Nextfly</div>
   <div class="menu">
-    <a href="user.php">Dashboard</a>
+    <a href="User.php">Dashboard</a>
     <a href="booking.php">Booking</a>
     <a href="payment.php">Pembayaran</a>
     <a href="#" onclick="logoutUser(); return false;">Keluar</a>
@@ -225,7 +225,7 @@ $namaUser = $_SESSION['nama'] ?? 'User';
   <section>
     <h2>Akses Lain</h2>
     <div class="role-switch">
-      <form action="../admin/admin.php" method="GET">
+      <form action="../admin/Admin.php" method="GET">
         <button type="submit">Buka Dashboard Admin</button>
       </form>
       <form action="../customer-service/CS.php" method="GET">
