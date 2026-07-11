@@ -20,6 +20,7 @@ if (
     exit();
 }
 
+// Nama CS yang login, dipakai untuk sapaan di dashboard
 $namaCS = $_SESSION['nama'] ?? 'Customer Service';
 ?>
 <!DOCTYPE html>
@@ -103,7 +104,7 @@ $namaCS = $_SESSION['nama'] ?? 'Customer Service';
     <a href="CS.php">Dashboard</a>
     <a href="reports.php">Laporan</a>
     <a href="history.php">Riwayat</a>
-    <a href="../../logout.php">Keluar</a>
+    <a href="#" onclick="logoutUser(); return false;">Keluar</a>
   </div>
   <div class="avatar"><?php echo strtoupper(substr($namaCS, 0, 1)); ?></div>
 </nav>
@@ -199,5 +200,17 @@ $namaCS = $_SESSION['nama'] ?? 'Customer Service';
   <?php endif; ?>
 </main>
 
+<script>
+  function logoutUser() {
+    fetch("../../api/logout.php", { method: "POST" })
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = "../../login.html";
+      })
+      .catch(() => {
+        window.location.href = "../../login.html";
+      });
+  }
+</script>
 </body>
 </html>
