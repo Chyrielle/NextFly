@@ -125,51 +125,7 @@
 
   <div class="results">
     <h2 id="resultTitle">Hasil Pencarian Hotel</h2>
-
-    <div class="result-card">
-      <div class="info">
-        <div class="icon">🏨</div>
-        <div>
-          <h3>Grand Ocean Hotel</h3>
-          <p>Nusa Penida, Bali · ⭐ 4.7 (320 ulasan)</p>
-        </div>
-      </div>
-      <div class="price">
-        <div class="amount">Rp 690.000</div>
-        <div class="unit">/ malam</div>
-        <a href="payment.html"><button type="button" class="select-btn">Pilih</button></a>
-      </div>
-    </div>
-
-    <div class="result-card">
-      <div class="info">
-        <div class="icon">🏨</div>
-        <div>
-          <h3>Sunrise Homestay</h3>
-          <p>Nusa Penida, Bali · ⭐ 4.4 (188 ulasan)</p>
-        </div>
-      </div>
-      <div class="price">
-        <div class="amount">Rp 350.000</div>
-        <div class="unit">/ malam</div>
-        <a href="payment.html"><button type="button" class="select-btn">Pilih</button></a>
-      </div>
-    </div>
-
-    <div class="result-card">
-      <div class="info">
-        <div class="icon">🏨</div>
-        <div>
-          <h3>Coral Bay Resort</h3>
-          <p>Nusa Penida, Bali · ⭐ 4.9 (512 ulasan)</p>
-        </div>
-      </div>
-      <div class="price">
-        <div class="amount">Rp 1.250.000</div>
-        <div class="unit">/ malam</div>
-        <a href="payment.html"><button type="button" class="select-btn">Pilih</button></a>
-      </div>
-    </div>
+    <div id="resultList"></div>
   </div>
 </main>
 
@@ -181,6 +137,49 @@
     Bus:     { dest: "Terminal Tujuan", guest: "Penumpang", title: "Hasil Pencarian Bus" },
   };
 
+  const results = {
+    Hotel: [
+      { icon: "🏨", nama: "Swiss Belhotel Solo", ket: "Kota Surakarta, Jawa Tengah · ⭐ 4.9 (900 ulasan)", harga: "Rp 700.000", satuan: "/ malam" },
+      { icon: "🏨", nama: "Gets Hotel Malang", ket: "Kota Malang, Jawa Timur · ⭐ 4.4 (388 ulasan)", harga: "Rp 460.000", satuan: "/ malam" },
+      { icon: "🏨", nama: "Quest Hotel", ket: "Denpasar Barat, Bali · ⭐ 4.8 (512 ulasan)", harga: "Rp 350.000", satuan: "/ malam" },
+    ],
+    Pesawat: [
+      { icon: "✈️", nama: "Citilink - Ekonomi", ket: "Jakarta (CGK) → Kertajati (KJT) · 06:00 - 08:50", harga: "Rp 890.000", satuan: "/ orang" },
+      { icon: "✈️", nama: "Garuda Indonesia", ket: "Jakarta (CGK) → Denpasar (DPS) · 09:15 - 12:05", harga: "Rp 1.150.000", satuan: "/ orang" },
+      { icon: "✈️", nama: "Lion Air", ket: "Denpasar (DPS) → Tanjung Harapan (TJS) · 14:30 - 17:20", harga: "Rp 900.000", satuan: "/ orang" },
+    ],
+    Kereta: [
+      { icon: "🚆", nama: "Whoosh", ket: "Bandung → Jakarta · 07:00 - 10:15", harga: "Rp 150.000", satuan: "/ orang" },
+      { icon: "🚆", nama: "Gajayana", ket: "Gambir → Malang · 09:30 - 13:00", harga: "Rp 85.000", satuan: "/ orang" },
+      { icon: "🚆", nama: "Taksaka", ket: "Gambir → Yogyakarta · 16:00 - 19:10", harga: "Rp 120.000", satuan: "/ orang" },
+    ],
+    Bus: [
+      { icon: "🚌", nama: "Sinar Jaya", ket: "Jabodetabek → Jakarta · 08:00 - 11:30", harga: "Rp 45.000", satuan: "/ orang" },
+      { icon: "🚌", nama: "Harapan Jaya", ket: "Blitar → Kediri · 10:00 - 11:40", harga: "Rp 30.000", satuan: "/ orang" },
+      { icon: "🚌", nama: "Rosalia Indah Eksekutif", ket: "Yogyakarta → Solo · 13:00 - 14:30", harga: "Rp 55.000", satuan: "/ orang" },
+    ],
+  };
+
+  function renderResults(key) {
+    const container = document.getElementById('resultList');
+    container.innerHTML = results[key].map(item => `
+      <div class="result-card">
+        <div class="info">
+          <div class="icon">${item.icon}</div>
+          <div>
+            <h3>${item.nama}</h3>
+            <p>${item.ket}</p>
+          </div>
+        </div>
+        <div class="price">
+          <div class="amount">${item.harga}</div>
+          <div class="unit">${item.satuan}</div>
+          <a href="payment.html"><button type="button" class="select-btn">Pilih</button></a>
+        </div>
+      </div>
+    `).join('');
+  }
+
   document.querySelectorAll('#tabs button').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
@@ -189,12 +188,14 @@
       document.getElementById('destLabel').textContent = labels[key].dest;
       document.getElementById('guestLabel').textContent = labels[key].guest;
       document.getElementById('resultTitle').textContent = labels[key].title;
+      renderResults(key);
     });
   });
 
   document.getElementById('form').addEventListener('submit', e => e.preventDefault());
+
+  renderResults('Hotel');
 </script>
 
 </body>
 </html>
-
