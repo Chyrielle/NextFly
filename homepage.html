@@ -154,10 +154,22 @@
     });
   });
 
-  document.getElementById('form').addEventListener('submit', e => {
+ document.getElementById('form').addEventListener('submit', async e => {
     e.preventDefault();
-    window.location.href = 'role/user/booking-page.html';
-  });
+
+    try {
+      const res = await fetch('api/check-session.php', { credentials: 'include' });
+      const data = await res.json();
+
+      if (data.loggedIn) {
+        window.location.href = 'role/user/booking-page.html';
+      } else {
+        window.location.href = 'register.html';
+      }
+    } catch (err) {
+      window.location.href = 'register.html';
+    }
+});
 </script>
 
 </body>
