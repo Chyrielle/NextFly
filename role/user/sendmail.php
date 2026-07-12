@@ -59,28 +59,16 @@ $service_type_label = $labelLayanan[$service_type] ?? $service_type;
 
         $mail->Subject = 'Konfirmasi Transaksi NextFly';
 
-        $mail->Body = "
-        <h2>Transaksi Berhasil</h2>
-
-        <hr>
-
-        <p><b>Kode Booking :</b> {$booking_code}</p>
-
-        <p><b>Kode Transaksi :</b> {$transaction_code}</p>
-
-        <p><b>Layanan :</b> {$service_type_label}</p>
-
-        <p><b>Total :</b> Rp " . number_format($total,0,",",".") . "</p>
-
-        <p><b>Metode Pembayaran :</b> {$payment_method}</p>
-
-        <p><b>Status :</b> {$status}</p>
-
-        <br>
-
-        Terima kasih telah menggunakan <b>NextFly</b>.
-        ";
-
+       $mail->Body = "<h2>Transaksi Berhasil</h2>"
+    . "<hr>"
+    . "<p><b>Kode Booking :</b> {$booking_code}</p>"
+    . "<p><b>Kode Transaksi :</b> {$transaction_code}</p>"
+    . "<p><b>Layanan :</b> {$service_type_label}</p>"
+    . "<p><b>Total :</b> Rp " . number_format($total,0,",",".") . "</p>"
+    . "<p><b>Metode Pembayaran :</b> {$payment_method}</p>"
+    . "<p><b>Status :</b> {$status}</p>"
+    . "<p>Terima kasih telah menggunakan <b>NextFly</b>.</p>";
+        
         $mail->send();
 
         return true;
