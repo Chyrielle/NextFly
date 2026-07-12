@@ -33,6 +33,25 @@ try {
 
 // Nama user yang login, dipakai untuk sapaan di dashboard
 $namaUser = $_SESSION['nama'] ?? 'User';
+
+// Ambil riwayat transaksi milik user yang sedang login dari database
+require_once '../../config/database.php';
+$db   = new Database();
+$conn = $db->conn;
+
+$transaksi = [];
+$user_id   = $_SESSION['user_id'] ?? 0;
+
+$stmt = mysqli_prepare($conn, "SELECT service_type, booking_code, total, status, created_at
+                                FROM transactions
+                                WHERE user_id = ?
+                                ORDER BY created_at DESC");
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+while ($row = mysqli_fetch_assoc($result)) {
+    $transaksi[] = $row;
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -196,27 +215,26 @@ $namaUser = $_SESSION['nama'] ?? 'User';
         </tr>
       </thead>
       <tbody>
+        <?php if (empty($transaksi)): ?>
         <tr>
-          <td data-label="Tanggal">28 Jun 2026</td>
-          <td data-label="Jenis">Hotel</td>
-          <td data-label="Deskripsi">Grand Ocean Hotel</td>
-          <td data-label="Total">Rp 1.250.000</td>
-          <td data-label="Status"><span class="status success">Berhasil</span></td>
+          <td colspan="5" style="text-align:center; color:#888;">Belum ada transaksi.</td>
         </tr>
+        <?php else: ?>
+        <?php foreach ($transaksi as $t): ?>
+        <?php
+          $statusRaw   = strtolower($t['status']);
+          $statusClass = ($statusRaw === 'success' || $statusRaw === 'berhasil') ? 'success' : 'pending';
+          $statusLabel = ($statusClass === 'success') ? 'Berhasil' : 'Menunggu';
+        ?>
         <tr>
-          <td data-label="Tanggal">25 Jun 2026</td>
-          <td data-label="Jenis">Kereta</td>
-          <td data-label="Deskripsi">Bandung → Jakarta</td>
-          <td data-label="Total">Rp 150.000</td>
-          <td data-label="Status"><span class="status success">Berhasil</span></td>
+          <td data-label="Tanggal"><?php echo date('d M Y', strtotime($t['created_at'])); ?></td>
+          <td data-label="Jenis"><?php echo htmlspecialchars($t['service_type']); ?></td>
+          <td data-label="Deskripsi"><?php echo htmlspecialchars($t['booking_code']); ?></td>
+          <td data-label="Total">Rp <?php echo number_format($t['total'], 0, ',', '.'); ?></td>
+          <td data-label="Status"><span class="status <?php echo $statusClass; ?>"><?php echo $statusLabel; ?></span></td>
         </tr>
-        <tr>
-          <td data-label="Tanggal">18 Jun 2026</td>
-          <td data-label="Jenis">Bus</td>
-          <td data-label="Deskripsi">Yogyakarta → Solo</td>
-          <td data-label="Total">Rp 45.000</td>
-          <td data-label="Status"><span class="status pending">Menunggu</span></td>
-        </tr>
+        <?php endforeach; ?>
+        <?php endif; ?>
       </tbody>
     </table>
   </section>
