@@ -216,7 +216,7 @@ $icon    = $iconMap[$service_type] ?? '🏨';
   <form class="layout" method="POST" action="payment.php">
     <div class="box">
       <h2>Ringkasan Pesanan</h2>
-     <div class="item-detail">
+      <div class="item-detail">
         <div class="icon"><?php echo $icon; ?></div>
         <div>
           <h3><?php echo htmlspecialchars($nama_layanan); ?></h3>
