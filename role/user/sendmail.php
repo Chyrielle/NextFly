@@ -18,6 +18,14 @@ function sendTransactionEmail(
 {
     $mail = new PHPMailer(true);
 
+    $labelLayanan = [
+    'Hotel'   => 'Akomodasi Hotel',
+    'Bus'     => 'Perjalanan Bus',
+    'Kereta'  => 'Perjalanan Kereta',
+    'Pesawat' => 'Penerbangan',
+];
+$service_type_label = $labelLayanan[$service_type] ?? $service_type;
+    
     try {
 
         
@@ -60,7 +68,7 @@ function sendTransactionEmail(
 
         <p><b>Kode Transaksi :</b> {$transaction_code}</p>
 
-        <p><b>Layanan :</b> {$service_type}</p>
+        <p><b>Layanan :</b> {$service_type_label}</p>
 
         <p><b>Total :</b> Rp " . number_format($total,0,",",".") . "</p>
 
