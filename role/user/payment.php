@@ -113,6 +113,17 @@ $nama_layanan = $_GET['nama_layanan'] ?? 'Grand Ocean Hotel';
 $lokasi       = $_GET['lokasi'] ?? 'Nusa Penida, Bali';
 $total        = $_GET['total'] ?? 1462000;
 $user_id      = $_SESSION['user_id'] ?? '';
+
+$checkin   = $_GET['checkin'] ?? null;
+$checkout  = $_GET['checkout'] ?? null;
+$malam     = $_GET['malam'] ?? null;
+$tamu      = $_GET['tamu'] ?? null;
+$kamar     = $_GET['kamar'] ?? null;
+$tanggal   = $_GET['tanggal'] ?? null;
+$penumpang = $_GET['penumpang'] ?? null;
+
+$iconMap = ['Hotel' => '🏨', 'Pesawat' => '✈️', 'Kereta' => '🚆', 'Bus' => '🚌'];
+$icon    = $iconMap[$service_type] ?? '🏨';
 ?>
 
 
@@ -205,8 +216,8 @@ $user_id      = $_SESSION['user_id'] ?? '';
   <form class="layout" method="POST" action="payment.php">
     <div class="box">
       <h2>Ringkasan Pesanan</h2>
-      <div class="item-detail">
-        <div class="icon">🏨</div>
+     <div class="item-detail">
+        <div class="icon"><?php echo $icon; ?></div>
         <div>
           <h3><?php echo htmlspecialchars($nama_layanan); ?></h3>
           <p><?php echo htmlspecialchars($lokasi); ?></p>
@@ -214,6 +225,15 @@ $user_id      = $_SESSION['user_id'] ?? '';
       </div>
       <div class="row"><span>Kode Booking</span><span><?php echo htmlspecialchars($booking_code); ?></span></div>
       <div class="row"><span>Jenis Layanan</span><span><?php echo htmlspecialchars($service_type); ?></span></div>
+      <?php if ($service_type === 'Hotel' && $checkin && $checkout): ?>
+        <div class="row"><span>Check-in</span><span><?php echo htmlspecialchars($checkin); ?></span></div>
+        <div class="row"><span>Check-out</span><span><?php echo htmlspecialchars($checkout); ?></span></div>
+        <div class="row"><span>Tamu &amp; Kamar</span><span><?php echo (int)($tamu ?? 1); ?> Tamu, <?php echo (int)($kamar ?? 1); ?> Kamar</span></div>
+        <div class="row"><span>Jumlah Malam</span><span><?php echo (int)($malam ?? 1); ?> malam</span></div>
+      <?php elseif ($tanggal): ?>
+        <div class="row"><span>Tanggal Keberangkatan</span><span><?php echo htmlspecialchars($tanggal); ?></span></div>
+        <div class="row"><span>Jumlah Penumpang</span><span><?php echo (int)($penumpang ?? 1); ?> orang</span></div>
+      <?php endif; ?>
       <div class="row total"><span>Total Pembayaran</span><span>Rp <?php echo number_format((float)$total, 0, ',', '.'); ?></span></div>
     </div>
 
