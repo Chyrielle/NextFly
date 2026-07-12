@@ -46,10 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     }
 
-   $booking_code = 'BKG' . strtoupper(substr(uniqid(), -8));
+    $booking_code = 'BKG' . strtoupper(substr(uniqid(), -8));
 
     $extra = [];
-    foreach (['checkin', 'checkout', 'malam', 'tamu', 'kamar', 'tanggal', 'penumpang'] as $key) {
+    foreach (['checkin', 'checkout', 'malam', 'tamu', 'kamar', 'tanggal', 'penumpang', 'asal', 'tujuan'] as $key) {
         if (isset($input[$key]) && $input[$key] !== '') {
             $extra[$key] = $input[$key];
         }
@@ -150,6 +150,33 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
     padding: 12px 16px; font-size: 13px; margin-bottom: 18px;
   }
 
+  /* MODAL DETAIL PEMESANAN */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(14,59,56,0.55);
+    align-items: center; justify-content: center; z-index: 50; padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: #fff; border-radius: 16px; padding: 26px 28px; max-width: 420px; width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  }
+  .modal-box h3 { font-size: 18px; margin-bottom: 4px; }
+  .modal-item-name { font-size: 13.5px; color: #667; margin-bottom: 18px; }
+  .modal-field { margin-bottom: 14px; }
+  .modal-field label { display: block; font-size: 12px; color: #778; margin-bottom: 5px; font-weight: 600; }
+  .modal-field input {
+    width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 10px 12px;
+    font-family: 'Poppins'; font-size: 14px; color: #1b3b3b;
+  }
+  .modal-error { color: #b3261e; font-size: 12.5px; margin-bottom: 8px; display: none; }
+  .modal-actions { display: flex; gap: 10px; margin-top: 6px; }
+  .modal-actions button {
+    flex: 1; padding: 11px; border-radius: 20px; border: none; font-size: 13.5px; font-weight: 600; cursor: pointer;
+  }
+  .modal-btn-cancel { background: #eee; color: #445; }
+  .modal-btn-confirm { background: #e8664b; color: #fff; }
+  .modal-btn-confirm:disabled { opacity: .6; cursor: not-allowed; }
+
   @media (max-width: 700px) {
     nav .menu { display: none; }
     main { padding: 24px 18px; }
@@ -185,24 +212,18 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
     <button data-tab="Bus">🚌 Bus</button>
   </div>
 
-   <form class="search-box" id="form">
+  <form class="search-box" id="form">
     <div class="field">
       <label id="destLabel">Hotel Tujuan</label>
       <input type="text" id="destInput" placeholder="Kota, Provinsi, Negara">
     </div>
     <div class="field">
-      <label id="dateLabel">Check-in / Check-out</label>
-      <div style="display:flex; gap:8px;">
-        <input type="date" id="checkinInput" style="flex:1">
-        <input type="date" id="checkoutInput" style="flex:1">
-      </div>
+      <label>Tanggal</label>
+      <input type="text" id="dateInput" placeholder="Check in & Check out">
     </div>
     <div class="field">
-      <label id="guestLabel">Tamu &amp; Kamar</label>
-      <div style="display:flex; gap:8px;">
-        <input type="number" id="tamuInput" min="1" value="1" style="flex:1">
-        <input type="number" id="kamarInput" min="1" value="1" style="flex:1">
-      </div>
+      <label id="guestLabel">Tamu dan Kamar</label>
+      <input type="text" id="guestInput" placeholder="Usia & Kamar">
     </div>
     <button type="submit">Cari</button>
   </form>
@@ -212,6 +233,58 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
     <div id="resultList"></div>
   </div>
 </main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <h3 id="modalTitle">Detail Pemesanan</h3>
+    <p class="modal-item-name" id="modalItemName"></p>
+
+    <div id="modalHotelFields" style="display:none;">
+      <div class="modal-field">
+        <label>Check-in</label>
+        <input type="date" id="modalCheckin">
+      </div>
+      <div class="modal-field">
+        <label>Check-out</label>
+        <input type="date" id="modalCheckout">
+      </div>
+      <div class="modal-field">
+        <label>Jumlah Tamu</label>
+        <input type="number" id="modalTamu" min="1" value="1">
+      </div>
+      <div class="modal-field">
+        <label>Jumlah Kamar</label>
+        <input type="number" id="modalKamar" min="1" value="1">
+      </div>
+    </div>
+
+    <div id="modalTravelFields" style="display:none;">
+      <div class="modal-field">
+        <label>Dari</label>
+        <input type="text" id="modalAsal" placeholder="Kota/Stasiun/Terminal asal">
+      </div>
+      <div class="modal-field">
+        <label>Ke</label>
+        <input type="text" id="modalTujuan" placeholder="Kota/Stasiun/Terminal tujuan">
+      </div>
+      <div class="modal-field">
+        <label>Tanggal Berangkat</label>
+        <input type="date" id="modalTanggal">
+      </div>
+      <div class="modal-field">
+        <label>Jumlah Penumpang</label>
+        <input type="number" id="modalPenumpang" min="1" value="1">
+      </div>
+    </div>
+
+    <p class="modal-error" id="modalError"></p>
+
+    <div class="modal-actions">
+      <button type="button" class="modal-btn-cancel" onclick="closeModal()">Batal</button>
+      <button type="button" class="modal-btn-confirm" id="modalConfirmBtn">Lanjutkan ke Pembayaran</button>
+    </div>
+  </div>
+</div>
 
 <script>
   const labels = {
@@ -270,60 +343,111 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
     `).join('');
 
     container.querySelectorAll('.select-btn').forEach(btn => {
-      btn.addEventListener('click', () => pilihTiket(btn));
+      btn.addEventListener('click', () => openModal(btn.dataset.key, btn.dataset.idx));
     });
   }
 
-async function pilihTiket(btn) {
-    const key  = btn.dataset.key;
-    const item = results[key][btn.dataset.idx];
-    const errorBox = document.getElementById('errorBox');
-    errorBox.style.display = 'none';
+  let selectedKey = null;
+  let selectedItem = null;
 
-    const isHotel  = key === 'Hotel';
-    const checkin  = document.getElementById('checkinInput').value;
-    const checkout = document.getElementById('checkoutInput').value;
-    const tamu     = parseInt(document.getElementById('tamuInput').value || '1', 10);
-    const kamar    = parseInt(document.getElementById('kamarInput').value || '1', 10);
+  function openModal(key, idx) {
+    selectedKey = key;
+    selectedItem = results[key][idx];
 
-    let hargaFinal = item.harga;
+    document.getElementById('modalItemName').textContent =
+      selectedItem.nama + ' — ' + formatRupiah(selectedItem.harga) + ' ' + selectedItem.satuan;
+    document.getElementById('modalError').style.display = 'none';
+
+    const isHotel = key === 'Hotel';
+    document.getElementById('modalHotelFields').style.display = isHotel ? 'block' : 'none';
+    document.getElementById('modalTravelFields').style.display = isHotel ? 'none' : 'block';
+    document.getElementById('modalTitle').textContent = isHotel ? 'Detail Menginap' : 'Detail Perjalanan';
+
+    if (isHotel) {
+      document.getElementById('modalCheckin').value = '';
+      document.getElementById('modalCheckout').value = '';
+      document.getElementById('modalTamu').value = 1;
+      document.getElementById('modalKamar').value = 1;
+    } else {
+      const [asalAwal, tujuanAwal] = selectedItem.lokasi.split('→').map(s => (s || '').trim());
+      document.getElementById('modalAsal').value = asalAwal || '';
+      document.getElementById('modalTujuan').value = tujuanAwal || '';
+      document.getElementById('modalTanggal').value = '';
+      document.getElementById('modalPenumpang').value = 1;
+    }
+
+    const confirmBtn = document.getElementById('modalConfirmBtn');
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = 'Lanjutkan ke Pembayaran';
+
+    document.getElementById('modalOverlay').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+  }
+
+  document.getElementById('modalConfirmBtn').addEventListener('click', async () => {
+    const errorEl = document.getElementById('modalError');
+    errorEl.style.display = 'none';
+
+    const isHotel = selectedKey === 'Hotel';
+    let hargaFinal = selectedItem.harga;
+    let lokasiFinal = selectedItem.lokasi;
     let extra = {};
 
     if (isHotel) {
+      const checkin  = document.getElementById('modalCheckin').value;
+      const checkout = document.getElementById('modalCheckout').value;
+      const tamu     = parseInt(document.getElementById('modalTamu').value || '1', 10);
+      const kamar    = parseInt(document.getElementById('modalKamar').value || '1', 10);
+
       if (!checkin || !checkout) {
-        errorBox.textContent = 'Isi tanggal check-in dan check-out dulu, ya.';
-        errorBox.style.display = 'block';
+        errorEl.textContent = 'Isi tanggal check-in dan check-out dulu, ya.';
+        errorEl.style.display = 'block';
         return;
       }
       const malam = Math.round((new Date(checkout) - new Date(checkin)) / 86400000);
       if (malam <= 0) {
-        errorBox.textContent = 'Tanggal check-out harus setelah check-in.';
-        errorBox.style.display = 'block';
+        errorEl.textContent = 'Tanggal check-out harus setelah check-in.';
+        errorEl.style.display = 'block';
         return;
       }
-      hargaFinal = item.harga * malam * kamar;
+      hargaFinal = selectedItem.harga * malam * kamar;
       extra = { checkin, checkout, malam, tamu, kamar };
     } else {
-      if (!checkin) {
-        errorBox.textContent = 'Isi tanggal keberangkatan dulu, ya.';
-        errorBox.style.display = 'block';
+      const asal      = document.getElementById('modalAsal').value.trim();
+      const tujuan    = document.getElementById('modalTujuan').value.trim();
+      const tanggal   = document.getElementById('modalTanggal').value;
+      const penumpang = parseInt(document.getElementById('modalPenumpang').value || '1', 10);
+
+      if (!asal || !tujuan) {
+        errorEl.textContent = 'Isi asal dan tujuan perjalanan dulu, ya.';
+        errorEl.style.display = 'block';
         return;
       }
-      hargaFinal = item.harga * tamu;
-      extra = { tanggal: checkin, penumpang: tamu };
+      if (!tanggal) {
+        errorEl.textContent = 'Isi tanggal keberangkatan dulu, ya.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      hargaFinal  = selectedItem.harga * penumpang;
+      lokasiFinal = asal + ' → ' + tujuan;
+      extra = { asal, tujuan, tanggal, penumpang };
     }
 
-    btn.disabled = true;
-    btn.textContent = 'Memproses...';
+    const confirmBtn = document.getElementById('modalConfirmBtn');
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = 'Memproses...';
 
     try {
       const res = await fetch('booking.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          service_type: key,
-          nama_layanan: item.nama,
-          lokasi: item.lokasi,
+          service_type: selectedKey,
+          nama_layanan: selectedItem.nama,
+          lokasi: lokasiFinal,
           total: hargaFinal,
           ...extra
         })
@@ -332,10 +456,10 @@ async function pilihTiket(btn) {
       const data = await res.json();
 
       if (!data.success) {
-        errorBox.textContent = data.message || 'Gagal membuat booking.';
-        errorBox.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Pilih';
+        errorEl.textContent = data.message || 'Gagal membuat booking.';
+        errorEl.style.display = 'block';
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = 'Lanjutkan ke Pembayaran';
         return;
       }
 
@@ -346,53 +470,29 @@ async function pilihTiket(btn) {
         lokasi: data.lokasi,
         total: data.total
       });
-      ['checkin', 'checkout', 'malam', 'tamu', 'kamar', 'tanggal', 'penumpang'].forEach(k => {
+      ['checkin', 'checkout', 'malam', 'tamu', 'kamar', 'tanggal', 'penumpang', 'asal', 'tujuan'].forEach(k => {
         if (data[k] !== undefined) params.set(k, data[k]);
       });
 
       window.location.href = 'payment.php?' + params.toString();
 
     } catch (err) {
-      errorBox.textContent = 'Terjadi kesalahan koneksi. Silakan coba lagi.';
-      errorBox.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Pilih';
+      errorEl.textContent = 'Terjadi kesalahan koneksi. Silakan coba lagi.';
+      errorEl.style.display = 'block';
+      confirmBtn.disabled = false;
+      confirmBtn.textContent = 'Lanjutkan ke Pembayaran';
     }
-  }
-      const params = new URLSearchParams({
-        booking_code: data.booking_code,
-        service_type: data.service_type,
-        nama_layanan: data.nama_layanan,
-        lokasi: data.lokasi,
-        total: data.total
-      });
+  });
 
-      window.location.href = 'payment.php?' + params.toString();
-
-    } catch (err) {
-      errorBox.textContent = 'Terjadi kesalahan koneksi. Silakan coba lagi.';
-      errorBox.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Pilih';
-    }
-  }
-
- document.querySelectorAll('#tabs button').forEach(btn => {
+  document.querySelectorAll('#tabs button').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentTab = btn.dataset.tab;
-      const isHotel = currentTab === 'Hotel';
-
       document.getElementById('destLabel').textContent = labels[currentTab].dest;
+      document.getElementById('guestLabel').textContent = labels[currentTab].guest;
+      document.getElementById('guestInput').placeholder = labels[currentTab].guestPh;
       document.getElementById('resultTitle').textContent = labels[currentTab].title;
-
-      document.getElementById('dateLabel').textContent = isHotel ? 'Check-in / Check-out' : 'Tanggal Berangkat';
-      document.getElementById('checkoutInput').style.display = isHotel ? 'block' : 'none';
-
-      document.getElementById('guestLabel').textContent = isHotel ? 'Tamu & Kamar' : 'Jumlah Penumpang';
-      document.getElementById('kamarInput').style.display = isHotel ? 'block' : 'none';
-
       document.getElementById('errorBox').style.display = 'none';
       renderResults(currentTab);
     });
