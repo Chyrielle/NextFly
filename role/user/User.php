@@ -152,6 +152,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <a href="User.php">Dashboard</a>
     <a href="booking.php">Booking</a>
     <a href="payment.php">Pembayaran</a>
+    <a href="report.php">Bantuan</a>
     <a href="#" onclick="logoutUser(); return false;">Keluar</a>
   </div>
   <div class="user">
