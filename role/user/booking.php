@@ -18,11 +18,6 @@ if (!isset($_SESSION['login']) || $role !== 'user') {
     exit();
 }
 
-/* ==========================================================
-   AJAX: dipanggil lewat fetch() saat user klik "Pilih"
-   Body: { service_type, nama_layanan, lokasi, total }
-   Balikan: booking_code + data lengkap untuk dilempar ke payment.php
-========================================================== */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Content-Type: application/json; charset=UTF-8");
 
@@ -65,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ], $extra));
 }
 
-// Nama user yang login, dipakai untuk sapaan/avatar
 $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
 ?>
 <!DOCTYPE html>
@@ -80,7 +74,6 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
   body { font-family: 'Poppins', sans-serif; color: #1b3b3b; background: #f4f1ea; }
   a { text-decoration: none; color: inherit; }
 
-  /* NAVBAR */
   nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px 40px; background: #0e3b38; color: #fff;
@@ -106,7 +99,6 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
   }
   .tabs button.active { background: #0e3b38; color: #fff; border-color: #0e3b38; }
 
-  /* SEARCH BOX */
   .search-box {
     background: #fff; border-radius: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.06);
     display: flex; flex-wrap: wrap; overflow: hidden; margin-bottom: 32px;
@@ -122,7 +114,6 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
     background: #e8664b; color: #fff; border: none; padding: 0 30px; font-weight: 600; cursor: pointer;
   }
 
-  /* RESULT LIST */
   .results h2 { font-size: 17px; margin-bottom: 14px; }
   .result-card {
     background: #fff; border-radius: 14px; padding: 18px 22px; margin-bottom: 14px;
@@ -150,7 +141,6 @@ $namaUser = $_SESSION['nama'] ?? ($_SESSION['user'] ?? 'User');
     padding: 12px 16px; font-size: 13px; margin-bottom: 18px;
   }
 
-  /* MODAL DETAIL PEMESANAN */
   .modal-overlay {
     display: none; position: fixed; inset: 0; background: rgba(14,59,56,0.55);
     align-items: center; justify-content: center; z-index: 50; padding: 20px;
