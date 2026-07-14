@@ -31,10 +31,8 @@ try {
     $users = [];
 }
 
-// Nama user yang login, dipakai untuk sapaan di dashboard
 $namaUser = $_SESSION['nama'] ?? 'User';
 
-// Ambil riwayat transaksi milik user yang sedang login dari database
 require_once '../../config/database.php';
 $db   = new Database();
 $conn = $db->conn;
@@ -65,7 +63,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   body { font-family: 'Poppins', sans-serif; color: #1b3b3b; background: #f4f1ea; }
   a { text-decoration: none; color: inherit; }
 
-  /* NAVBAR */
   nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px 40px; background: #0e3b38; color: #fff;
@@ -83,11 +80,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
   main { padding: 32px 40px; max-width: 1100px; margin: 0 auto; }
 
-  /* GREETING */
   .greeting h1 { font-size: 26px; }
   .greeting p { margin-top: 6px; color: #556; font-size: 14px; }
 
-  /* SHORTCUT TIKET */
   .shortcuts {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 28px 0 36px;
   }
@@ -99,11 +94,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   .shortcuts .icon { font-size: 26px; margin-bottom: 8px; }
   .shortcuts .label { font-size: 13.5px; font-weight: 500; }
 
-  /* SECTION */
   section { margin-bottom: 36px; }
   section h2 { font-size: 18px; margin-bottom: 14px; }
 
-  /* PESANAN MENDATANG */
   .trip-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
   .trip-card {
     background: #fff; border-radius: 14px; padding: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.06);
@@ -116,7 +109,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   .trip-card p { font-size: 13px; color: #667; }
   .trip-card .date { margin-top: 10px; font-size: 12.5px; color: #e8664b; font-weight: 600; }
 
-  /* RIWAYAT TABLE */
   table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
   th, td { text-align: left; padding: 14px 16px; font-size: 13.5px; }
   thead { background: #0e3b38; color: #fff; }
@@ -125,7 +117,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   .status.success { background: #e3f6e8; color: #1e7d3a; }
   .status.pending { background: #fff3e0; color: #b8720c; }
 
-  /* TOMBOL PINDAH ROLE (khusus admin / CS) */
   .role-switch { margin-top: 30px; display: flex; gap: 12px; }
   .role-switch button {
     background: #0e3b38; color: #fff; border: none; padding: 10px 18px;
