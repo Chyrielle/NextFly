@@ -20,7 +20,6 @@ if (
     exit();
 }
 
-// Nama CS yang login, dipakai untuk sapaan di dashboard
 $namaCS = $_SESSION['nama'] ?? 'Customer Service';
 ?>
 <!DOCTYPE html>
