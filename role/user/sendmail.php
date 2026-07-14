@@ -1,5 +1,7 @@
 <?php
+
 require_once __DIR__ . '/../../vendor/autoload.php';
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -26,22 +28,32 @@ $service_type_label = $labelLayanan[$service_type] ?? $service_type;
     
     try {
 
+        
+
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
+
        
         $mail->Username = 'felloniasmith@gmail.com';
+
         $mail->Password = 'yqhnsvvpgzrtaywm';
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
+
+        
 
         $mail->setFrom(
             'felloniasmith@gmail.com',
             'NextFly'
         );
 
+       
+
         $mail->addAddress($email);
+
+       
 
         $mail->isHTML(true);
 
@@ -58,6 +70,7 @@ $service_type_label = $labelLayanan[$service_type] ?? $service_type;
     . "<p>Terima kasih telah menggunakan <b>NextFly</b>.</p>";
         
         $mail->send();
+
         return true;
 
     } catch (Exception $e) {
@@ -66,6 +79,9 @@ $service_type_label = $labelLayanan[$service_type] ?? $service_type;
         echo "PHPMailer Error:\n";
         echo $mail->ErrorInfo;
         echo "</pre>";
+
         return false;
+
     }
+
 }

@@ -89,8 +89,8 @@ if($r) $totalPendapatan = $r->fetch_assoc()['pendapatan'] ?? 0;
   <input id="new_password" type="password" placeholder="Password">
   <select id="new_role">
     <option value="admin">Admin</option>
-    <option value="customer_service">Customer_Service</option>
-    <option value="user">User</option>
+    <option value="editor">Editor</option>
+    <option value="viewer">Viewer</option>
   </select>
   <button onclick="tambahUser()">+ Simpan</button>
 </div>
@@ -134,8 +134,8 @@ async function loadUsers() {
       <td>
         <select id="role-${u.id}">
           <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
-          <option value="customer_service" ${u.role==='customer_service'?'selected':''}>Customer_Service</option>
-          <option value="user" ${u.role==='user'?'selected':''}>User</option>
+          <option value="editor" ${u.role==='editor'?'selected':''}>Editor</option>
+          <option value="viewer" ${u.role==='viewer'?'selected':''}>Viewer</option>
         </select>
       </td>
       <td>

@@ -14,7 +14,7 @@ $data     = json_decode(file_get_contents("php://input"), true);
 $username = $data['username'] ?? '';
 $password = $data['password'] ?? '';
 $email    = $data['email']    ?? '';
-$role     = $data['role']     ?? 'user';
+$role     = $data['role']     ?? 'viewer';
 
 if (empty($username) || empty($password) || empty($email)) {
     echo json_encode(["success" => false, "message" => "Semua field wajib diisi"]);

@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once "../../config/database.php";
 require_once "sendmail.php";
-if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'user') {
+if (!isset($_SESSION['login']) || !in_array($_SESSION['role'] ?? '', ['admin', 'editor', 'viewer'])) {
     header("Location: ../../login.html");
     exit;
 }

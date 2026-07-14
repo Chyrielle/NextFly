@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login']) || !in_array($_SESSION['role'] ?? '', ['admin', 'customer_service', 'user'])) {
+if (!isset($_SESSION['login']) || !in_array($_SESSION['role'] ?? '', ['admin', 'editor', 'viewer'])) {
     header("location: ../../login.html");
     exit();
 }

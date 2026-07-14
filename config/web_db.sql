@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2026 pada 14.10
+-- Waktu pembuatan: 13 Jul 2026 pada 12.11
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -24,6 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `reports`
+--
+
+CREATE TABLE `reports` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `answer` text DEFAULT NULL,
+  `status` enum('pending','answered') DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `booking_code` varchar(50) DEFAULT NULL,
+  `transaction_code` varchar(50) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `service_type` varchar(100) DEFAULT NULL,
+  `total` decimal(12,2) DEFAULT NULL,
+  `payment_method` varchar(100) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
@@ -32,62 +66,33 @@ CREATE TABLE `users` (
   `username` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('admin','customer_service','user') NOT NULL
+  `role` enum('admin','editor','viewer') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `reports` (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    subject VARCHAR(255) NOT NULL,
-    message TEXT NOT NULL,
-    answer TEXT DEFAULT NULL,
-    status ENUM('pending','answered') DEFAULT 'pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE `transactions` (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    booking_code VARCHAR(50),
-    transaction_code VARCHAR(50),
-    user_id INT,
-    service_type VARCHAR(100),
-    total DECIMAL(12,2),
-    payment_method VARCHAR(100),
-    status VARCHAR(50),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users`
-(`id`, `username`, `email`, `password`, `role`)
-VALUES
-(
-1,
-'Yanto Tarmiji',
-'admin@nextfly.com',
-'e10adc3949ba59abbe56e057f20f883e',
-'admin'
-),
-(
-2,
-'Zaki Indomie',
-'cs@nextfly.com',
-'e10adc3949ba59abbe56e057f20f883e',
-'customer_service'
-),
-(
-3,
-'Rusdi Ngawi',
-'user@nextfly.com',
-'e10adc3949ba59abbe56e057f20f883e',
-'user'
-);
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
+(1, 'Yanto Tarmiji', '', 'e10adc3949ba59abbe56e057f20f883e', 'admin'),
+(2, 'Zaki Indomie', '', 'e10adc3949ba59abbe56e057f20f883e', 'editor'),
+(3, 'Rusdi Ngawi', '', 'e10adc3949ba59abbe56e057f20f883e', 'viewer');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `users`
@@ -100,10 +105,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

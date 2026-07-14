@@ -13,19 +13,19 @@ class infouser extends Database {
         $query = "INSERT INTO $this->table (username, password, role) VALUES (?, MD5(?), ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("sss", $username, $password, $role);
-        $stmt->execute();
+        return $stmt->execute();
     }
     public function delete($id){
         $query = "DELETE FROM $this->table WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $id);
-        $stmt->execute();
+        return $stmt->execute();
     }
     public function update($id, $role){
         $query = "UPDATE $this->table  SET role = ? WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("si", $role, $id);
-        $stmt->execute();
+        return $stmt->execute();
     }
     public function readById($id) {
         $query = "SELECT * FROM $this->table WHERE id = ?";

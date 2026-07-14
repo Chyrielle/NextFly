@@ -50,8 +50,16 @@ if ($method === "GET") {
         sendResponse(400, ["success" => false, "message" => "Semua field wajib diisi"]);
     }
 
-    $infouser->insert($username, $password, $role);
-    sendResponse(201, ["success" => true, "message" => "User berhasil ditambahkan"]);
+    if (!in_array($role, ['admin', 'editor', 'viewer'])) {
+        sendResponse(400, ["success" => false, "message" => "Role tidak valid"]);
+    }
+
+    $ok = $infouser->insert($username, $password, $role);
+    if ($ok) {
+        sendResponse(201, ["success" => true, "message" => "User berhasil ditambahkan"]);
+    } else {
+        sendResponse(500, ["success" => false, "message" => "Gagal menambahkan user"]);
+    }
 
 } elseif ($method === "PUT") {
     $data = json_decode(file_get_contents("php://input"), true);
@@ -63,8 +71,16 @@ if ($method === "GET") {
         sendResponse(400, ["success" => false, "message" => "ID dan role wajib diisi"]);
     }
 
-    $infouser->update($id, $role);
-    sendResponse(200, ["success" => true, "message" => "Role user ID $id berhasil diupdate"]);
+    if (!in_array($role, ['admin', 'editor', 'viewer'])) {
+        sendResponse(400, ["success" => false, "message" => "Role tidak valid"]);
+    }
+
+    $ok = $infouser->update($id, $role);
+    if ($ok) {
+        sendResponse(200, ["success" => true, "message" => "Role user ID $id berhasil diupdate"]);
+    } else {
+        sendResponse(500, ["success" => false, "message" => "Gagal mengupdate role user ID $id"]);
+    }
 
 } elseif ($method === "DELETE") {
     $data = json_decode(file_get_contents("php://input"), true);
