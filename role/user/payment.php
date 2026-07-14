@@ -276,6 +276,5 @@ $icon    = $iconMap[$service_type] ?? '🏨';
     });
   });
 </script>
-
 </body>
 </html>
